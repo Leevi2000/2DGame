@@ -9,14 +9,14 @@ public class Enemy : MonoBehaviour
     public bool homingBullets = false;  //The bullets enemy shoots slightly rotates towards player
 
     public float enemySpeed;
-    public int enemyShootingInterval; //Time between bullet shots
+    public int enemyFireRate; //Time between bullet shots
 
     public Transform defaultFirepoint;
     public Transform midLeftFirepoint;
     public Transform midRightFirepoint;
 
     public Rigidbody rb;
-    public float CurrentEnemySpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +29,11 @@ public class Enemy : MonoBehaviour
     {
         if (rb.velocity.z < enemySpeed)
         {
-            rb.AddForce(new Vector3(0, 0, -0.1f), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, 0, -0.01f), ForceMode.Impulse);
         }
         else if (rb.velocity.z > enemySpeed)
         {
-            rb.AddForce(new Vector3(0, 0, 0.1f), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, 0, 0.01f), ForceMode.Impulse);
         }
     }
 }

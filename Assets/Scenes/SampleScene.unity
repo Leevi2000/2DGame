@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multipleFirepoints: 0
   homingBullets: 0
-  enemySpeed: 1
+  enemySpeed: 0.5
   enemyShootingInterval: 0
   defaultFirepoint: {fileID: 1122324481}
   midLeftFirepoint: {fileID: 1530274263}
@@ -274,7 +274,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!65 &472078506
 BoxCollider:
@@ -498,7 +498,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 58
+  field of view: 98
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -524,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 8}
+  m_LocalPosition: {x: 0, y: 10.7, z: 9.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
