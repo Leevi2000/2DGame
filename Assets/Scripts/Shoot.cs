@@ -7,6 +7,9 @@ public class Shoot : MonoBehaviour
 
     public Transform firePoint;
     public GameObject luotiPrefab;
+    public float playerFireRate;
+
+    private bool canShoot = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +17,26 @@ public class Shoot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKeyDown("z"))
-        {
-            Fire();
+     
+        if (canShoot)
+            {
+            StartCoroutine(Fire());
         }
+            
+        
     }
-
-    void Fire()
+    IEnumerator Fire()
     {
+        canShoot = false;
         Instantiate(luotiPrefab, firePoint.position, firePoint.rotation);
+
+        yield return new WaitForSeconds(playerFireRate);
+        canShoot = true;
     }
+    //void Fire()
+    //{
+    //    Instantiate(luotiPrefab, firePoint.position, firePoint.rotation);
+    //}
 }
