@@ -11,11 +11,10 @@ public class Enemy : MonoBehaviour
     public float enemySpeed;
     public float enemyFireRate; //Time between bullet shots
     private float nextFire = 0.5f;
-    public float enemyHp;
+    public int MaxEnemyHp;
+    public int enemyHp;
 
     //--Firepoints--
-
-    //Possible firepoints for the enemy to shoot from
     public Transform defaultFirepoint;
     public Transform midLeftFirepoint;
     public Transform midRightFirepoint;
@@ -33,6 +32,8 @@ public class Enemy : MonoBehaviour
     //
     GameObject selectedBullet;
 
+    public HpBar healthBar;
+
     //To be able to make firerate
     bool allowFire = true;
 
@@ -42,6 +43,8 @@ public class Enemy : MonoBehaviour
     {
        rb.AddForce(new Vector3(0, 0, -enemySpeed), ForceMode.Impulse);
 
+        enemyHp = MaxEnemyHp;
+        healthBar.SetMaxHealth(MaxEnemyHp);
         GetShootingType();
     }
 
@@ -74,7 +77,8 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(Fire());
         }
-        CheckHP();
+     
+        
     }
     void CheckHP()
     {
@@ -86,7 +90,21 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       // if (other.CompareTag())
+       
+        GameObject bullet;
+       if (other.CompareTag("playerBullet"))
+        {
+            Debug.Log("Pam");
+            bullet = other.gameObject;
+         
+            BulletScript bulletDamage = bullet.GetComponent<BulletScript>();
+            enemyHp -= bulletDamage.damage;
+
+            healthBar.SetHealth(enemyHp);
+
+            Destroy(bullet);
+            CheckHP();
+        }
     }
     //void FireBullets()
     //{

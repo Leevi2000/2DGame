@@ -9,7 +9,12 @@ public class BulletScript : MonoBehaviour
     public float bulletSpeed;
     public float turnSpeed;
     public bool canTurn;
+    public int damage;
+
     GameObject vihu;
+
+ 
+
     // Start is called before the first frame update
     void Start()
     {
