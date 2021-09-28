@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     public int amountToDecrease = 0;
 
     public GameObject TempText;
- 
+    public int PlayerMaxHp;
+     int playerHp;
+    public HpBar healthBar;
 
     private static PlayerController instance;
     public static PlayerController Instance
@@ -42,7 +44,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        healthBar.SetMaxHealth(PlayerMaxHp);
+        playerHp = PlayerMaxHp;
         EnableGyro();
     }
     public bool EnableGyro()
@@ -69,13 +72,28 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerMove()
     {
+        float tiltMultiplier = 1;
+        if (gyroRot.x < 0.3 && gyroRot.x > -0.3)
+        {
+            if (gyroRot.x > 0)
+            {
+                tiltMultiplier = 0.8f + (gyroRot.x * 1.5f);
+            }
+            else if (gyroRot.x < 0)
+            {
+                tiltMultiplier = 0.8f + (-gyroRot.x * 1.5f);
+            }
+          
+        }
+
+
         if (gyroRot.x > 0.1)
         {
-            rb.AddForce(new Vector3(playerSpeed, 0, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(playerSpeed * tiltMultiplier, 0, 0), ForceMode.Impulse);
         }
         else if (gyroRot.x < -0.1)
         {
-            rb.AddForce(new Vector3(-playerSpeed, 0, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(-playerSpeed * tiltMultiplier, 0, 0), ForceMode.Impulse);
         }
         else if (gyroRot.x < 0.1 && gyroRot.x > -0.1)
         {
@@ -94,7 +112,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("enemyBullet"))
+        {
+            GameObject vihunLuoti = other.gameObject;
+            EnemyBulletScript enemyBulletScript = vihunLuoti.GetComponent<EnemyBulletScript>();
+            playerHp -= enemyBulletScript.damage;
+            healthBar.SetHealth(playerHp);
+            Destroy(vihunLuoti);
 
+            CheckPlayerHp();
+        }
+    }
+    void CheckPlayerHp()
+    {
+        if (playerHp == 0 || playerHp < 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     public Vector3 GetGyroRotation()
     {
         return gyroRot;

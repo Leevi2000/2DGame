@@ -30,7 +30,7 @@ public class Shoot : MonoBehaviour
     IEnumerator Fire()
     {
         canShoot = false;
-        Instantiate(luotiPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(luotiPrefab, firePoint.position, new Quaternion(firePoint.rotation.x, firePoint.rotation.y + Random.Range(-0.05f,0.05f), firePoint.rotation.z, firePoint.rotation.w));
 
         yield return new WaitForSeconds(playerFireRate);
         canShoot = true;

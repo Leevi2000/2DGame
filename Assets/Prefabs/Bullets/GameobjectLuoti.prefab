@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8867029286450117935}
   - component: {fileID: 8867029286450117932}
   - component: {fileID: 8867029286450117933}
+  - component: {fileID: 3805478313419644540}
   m_Layer: 0
   m_Name: GameobjectLuoti
-  m_TagString: Untagged
+  m_TagString: enemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,7 @@ MonoBehaviour:
   rb: {fileID: 8867029286450117933}
   bulletSpeed: 5
   canRotate: 1
+  damage: 25
   player: {fileID: 0}
   turnSpeed: 0.5
 --- !u!54 &8867029286450117933
@@ -66,6 +68,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3805478313419644540
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867029286450117922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19369236, y: 0.19252367, z: 0.37927437}
+  m_Center: {x: 0.00014736131, y: -0.0011088625, z: 0.00012493134}
 --- !u!1001 &8867029287341959590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +91,18 @@ PrefabInstance:
     - target: {fileID: 2070051836544249692, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.20000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,6 +117,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.7071068
       objectReference: {fileID: 0}
@@ -100,14 +131,6 @@ PrefabInstance:
     - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -121,20 +144,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.20000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 6915747876239757360, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.20000002
-      objectReference: {fileID: 0}
     - target: {fileID: 6915747876239757374, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
       propertyPath: m_Name
       value: EnemyBulletHoming
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6915747876239757375, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
+    - {fileID: 6915747876239757373, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d68ad0e6593ee414bb2bc041d87cfbce, type: 3}
 --- !u!4 &2663782581923641750 stripped
 Transform:
