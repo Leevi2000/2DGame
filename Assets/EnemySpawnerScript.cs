@@ -23,11 +23,12 @@ public class EnemySpawnerScript : MonoBehaviour
     Vector3 spawnPos;
     int gameDiff;
 
-    GameObject selectedEnemy = new GameObject();
+    GameObject selectedEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
-     
+        GameObject selectedEnemy = new GameObject();
         lightEnemies.Add(enemyLight1);
         lightEnemies.Add(enemyLight2);
         lightEnemies.Add(enemyLight3);

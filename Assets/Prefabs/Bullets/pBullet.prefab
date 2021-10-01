@@ -51,7 +51,7 @@ MonoBehaviour:
   bulletSpeed: 20
   turnSpeed: 4
   canTurn: 1
-  damage: 35
+  damage: 1
 --- !u!54 &7642207107867921747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80,6 +80,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0

@@ -32,6 +32,11 @@ public class EnemyBulletHoming : EnemyBulletScript
             x.Normalize();
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(x), turnSpeed * Time.deltaTime);
         }
+
+        if (transform.position.z < -5)
+        {
+            Destroy(this.gameObject);
+        }
  
     }
 }

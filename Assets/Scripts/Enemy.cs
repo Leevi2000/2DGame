@@ -77,8 +77,11 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(Fire());
         }
-     
-        
+
+        if (transform.position.z < -5)
+        {
+            Destroy(this.gameObject);
+        }
     }
     void CheckHP()
     {
