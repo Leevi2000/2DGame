@@ -134,16 +134,19 @@ public class BulletScript : MonoBehaviour
             targetedEnemy = closestNearBullet;
         }
 
+        
+
         Debug.Log("Targeted enemy:" + targetedEnemy.transform.position.ToString());
 
         Debug.Log("Closest enemy near player: " + closestNearPlayer.transform.position.ToString());
         Debug.Log("Closest enemy near bullet: " + closestNearBullet.transform.position.ToString());
 
 
-        //If bullet has gone past targeted player, disable bullet rotation
+        //If bullet has gone past targeted enemy, disable bullet rotation
         if (transform.position.z > targetedEnemy.transform.position.z)
         {
             canTurn = false;
+            targetedEnemy = closestNearBullet;
         }
         else //If target changes, and bullet hasn't gone past it yet, enable bullet rotation
         {
@@ -205,7 +208,13 @@ public class BulletScript : MonoBehaviour
     //}
     float CalcEnemyDist(GameObject obj)
     {
-        float objDist = Mathf.Sqrt((Mathf.Pow(transform.position.x - obj.transform.position.x, 2) + Mathf.Pow(transform.position.z - obj.transform.position.z, 2));
+        float objDist = Mathf.Sqrt((Mathf.Pow(transform.position.x - obj.transform.position.x, 2) + Mathf.Pow(transform.position.z - obj.transform.position.z, 2)));
+
+        return objDist;
+    }
+    float CalcEnemyDist(GameObject enemyObj, GameObject playerObj)
+    {
+        float objDist = Mathf.Sqrt((Mathf.Pow(playerObj.transform.position.x - enemyObj.transform.position.x, 2) + Mathf.Pow(playerObj.transform.position.z - enemyObj.transform.position.z, 2)));
 
         return objDist;
     }

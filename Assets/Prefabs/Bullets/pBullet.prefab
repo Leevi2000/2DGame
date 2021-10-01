@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7642207107867921747}
   bulletSpeed: 20
-  turnSpeed: 4
+  turnSpeed: 6
   canTurn: 1
-  damage: 1
+  damage: 35
 --- !u!54 &7642207107867921747
 Rigidbody:
   m_ObjectHideFlags: 0
